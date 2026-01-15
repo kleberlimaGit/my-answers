@@ -14,3 +14,19 @@ body {
     margin-top: 2rem;
 }
 
+.header2 {
+    /* Um gradiente linear sutil indo do roxo escuro para o quase preto */
+    background: linear-gradient(135deg, var(--bs-gray-700) 0%, var(--bs-gray-900) 100%);
+
+    /* Efeito de vidro (opcional) */
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    height: 80px;
+    color: white;
+
+}

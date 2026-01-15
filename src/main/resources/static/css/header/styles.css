@@ -1,0 +1,16 @@
+.header {
+        /* Um gradiente linear sutil indo do roxo escuro para o quase preto */
+        background: linear-gradient(135deg, #1e1e2f 0%, #0f0f13 100%);
+
+        /* Efeito de vidro (opcional) */
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 5%;
+        height: 80px;
+        color: white;
+
+}
