@@ -12,17 +12,37 @@
     <!-- <link rel="icon" th:href="@{/image/logo.jpg}" /> -->
     <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet"/>
     <link th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet"/>
+
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:opsz,wght@17..18,400..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:opsz,wght@17..18,400..700&display=swap"
+          rel="stylesheet">
 
 </head>
 
-<body>
-    <header th:insert="~{fragments/header :: header}"></header>
-
+<body class="d-flex flex-column">
+<header th:insert="~{fragments/header :: header}"></header>
+<main class="container mt-5 rounded" style="background-color: var(--bs-gray-700);">
+    <div id="editor">
+        <p>Hello World!</p>
+        <p>Some initial <strong>bold</strong> text</p>
+        <p><br /></p>
+    </div>
+</main>
 
 <script th:src="@{/webjars/jquery/jquery.min.js(v=${version}) }"></script>
 <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.min.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+
+<script>
+    const quill = new Quill('#editor', {
+        placeholder: 'Compose an epic...',
+        theme: 'snow',
+    });
+</script>
+
 </body>
 </html>
