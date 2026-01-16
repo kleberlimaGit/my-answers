@@ -38,10 +38,21 @@
 
 
 <script>
-    const quill = new Quill('#editor', {
-        placeholder: 'Compose an epic...',
-        theme: 'snow',
-    });
+    const options = {
+        readOnly: true,
+        modules: {
+            toolbar: null
+        },
+        theme: 'snow'
+    };
+    const quill = new Quill('#editor', options);
+    const Delta = Quill.import('delta');
+    quill.setContents(
+        new Delta()
+            .insert('Hello, ')
+            .insert('World', { bold: true })
+            .insert('\n')
+    );
 </script>
 
 </body>
