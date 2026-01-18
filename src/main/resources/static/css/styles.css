@@ -77,3 +77,27 @@ body {
     border: none !important;
     padding: 16px 18px;
 }
+
+
+::placeholder {
+    color: var(--bs-white) !important;
+    opacity: 1;
+}
+
+::-webkit-input-placeholder {
+    color: var(--bs-white) !important;
+}
+
+::-moz-placeholder {
+    color: var(--bs-white) !important;
+    opacity: 1;
+}
+
+:-ms-input-placeholder {
+    color: var(--bs-white) !important;
+}
+
+input {
+    border-color: var(--bs-gray-600) !important;
+    color: var(--bs-white) !important;
+}
