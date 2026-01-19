@@ -6,6 +6,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 import lombok.extern.log4j.Log4j;
+import lombok.extern.log4j.Log4j2;
 
 import java.util.UUID;
 
@@ -16,7 +17,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Log4j
 public class AboutMe extends AbstractEntity {
 
     @Id

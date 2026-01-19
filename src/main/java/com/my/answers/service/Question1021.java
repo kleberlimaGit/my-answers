@@ -22,21 +22,21 @@ public class Question1021 implements AnswerService{
             StringBuilder sb = new StringBuilder();
             List<Integer> notes = List.of(100,50,20,10,5,2);
             List<Double> coins = List.of(1.0, 0.5, 0.25, 0.1, 0.05, 0.01);
-            sb.append("NOTES:/n");
+            sb.append("NOTES:\n");
             for (Integer note : notes) {
 
                 value = Math.round(value * 100.0) / 100.0;
                 int quantity = (int) (value / note);
                 value %= note;
-                sb.append(String.format("%d note(s) of R$ %.2f%n /n", quantity, (double) note));
+                sb.append(String.format("%d note(s) of R$ %.2f%n", quantity, (double) note));
             }
-            sb.append("COINS:/n");
+            sb.append("COINS:\n");
             for (double coin : coins) {
 
                 value = Math.round(value * 100.0) / 100.0;
                 int quantity = (int) (value / coin);
                 value %= coin;
-                sb.append(String.format("%d coin(s) of R$ %.2f%n /n", quantity, coin));
+                sb.append(String.format("%d coin(s) of R$ %.2f%n", quantity, coin));
             }
             return sb.toString();
         }catch (Exception e) {
