@@ -1,5 +1,6 @@
 package com.my.answers.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
@@ -9,13 +10,14 @@ import java.time.Instant;
 
 @MappedSuperclass
 @Data
-public abstract class AbstractAuditEntity {
+public abstract class AbstractEntity {
 
     private Instant createdAt;
 
     private Instant updatedAt;
 
-    private String usuario;
+    @Column(nullable = false, length = 4)
+    private String country;
 
     @PrePersist
     public void prePersist() {

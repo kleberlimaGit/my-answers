@@ -17,12 +17,10 @@ import java.util.UUID;
 @NoArgsConstructor
 @Builder
 @Log4j
-public class AboutMe extends AbstractAuditEntity{
+public class AboutMe extends AbstractEntity {
 
     @Id
     private UUID uuid = UUID.randomUUID();
     @Column(nullable = false, columnDefinition = "TEXT")
     private String curriculum;
-    @Column(nullable = false, length = 4)
-    private String country;
 }

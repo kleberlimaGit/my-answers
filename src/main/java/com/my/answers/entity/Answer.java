@@ -12,7 +12,7 @@ import lombok.extern.log4j.Log4j;
 @NoArgsConstructor
 @Builder
 @Log4j
-public class Answer extends AbstractAuditEntity{
+public class Answer extends AbstractEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,6 +28,9 @@ public class Answer extends AbstractAuditEntity{
 
     @Column(nullable = false)
     private Integer questionNumber;
+
+    @Column(nullable = false)
+    private String language;
 
 }
 
