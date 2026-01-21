@@ -1,6 +1,6 @@
 package com.my.answers.service;
 
-public interface AnswerService {
-    int numeroQuestao();
+public interface QuestionService {
+    int questionNumber();
     String response(String data);
 }

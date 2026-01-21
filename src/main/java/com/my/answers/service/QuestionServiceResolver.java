@@ -7,20 +7,20 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class AnswerServiceResolver {
+public class QuestionServiceResolver {
 
-    private final Map<Integer, AnswerService> byNumeroQuestion;
+    private final Map<Integer, QuestionService> byNumeroQuestion;
 
-    public AnswerServiceResolver(List<AnswerService> services) {
+    public QuestionServiceResolver(List<QuestionService> services) {
         this.byNumeroQuestion = services.stream()
                 .collect(Collectors.toMap(
-                        AnswerService::numeroQuestao,
+                        QuestionService::questionNumber,
                         s -> s
                 ));
     }
 
-    public AnswerService resolve(int questionNumber) {
-        AnswerService service = byNumeroQuestion.get(questionNumber);
+    public QuestionService resolve(int questionNumber) {
+        QuestionService service = byNumeroQuestion.get(questionNumber);
         if (service == null) throw new IllegalArgumentException("This question doesn't exist: " + questionNumber);
         return service;
     }

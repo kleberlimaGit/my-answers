@@ -25,11 +25,12 @@ public class Answer extends AbstractEntity {
     @Column(nullable = false, columnDefinition = "TEXT")
     private String snippet;
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private Integer questionNumber;
 
     @Column(nullable = false)
-    private String language;
+    @Enumerated(EnumType.STRING)
+    private Language language;
 
 }
 
