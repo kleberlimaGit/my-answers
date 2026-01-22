@@ -1,8 +1,8 @@
 package com.my.answers.entity;
 
 public enum Language {
-    PT_BR("pr-BR"),
-    EN_US("en-US");
+    PT_BR("pt"),
+    EN_US("en");
 
     private final String code;
 

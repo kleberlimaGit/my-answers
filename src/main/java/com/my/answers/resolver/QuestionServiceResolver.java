@@ -1,5 +1,6 @@
-package com.my.answers.service;
+package com.my.answers.resolver;
 
+import com.my.answers.service.QuestionService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

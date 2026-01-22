@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="#{error.title}">Erro</title>
+    <meta charset="UTF-8"/>
+    <meta name="robots" content="noindex">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta name="description" content=""/>
+    <meta name="author" content=""/>
+
+    <link th:href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{/css/styles.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+          integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:opsz,wght@17..18,400..700&display=swap"
+          rel="stylesheet">
+</head>
+<body class="d-flex flex-column">
+<header th:insert="~{fragments/header :: header}"></header>
+
+<main class="flex-fill d-flex align-items-center justify-content-center container py-5">
+    <div class="text-center">
+        <h1 class="h3 mb-3">
+            <i class="fa fa-triangle-exclamation text-warning"></i>
+            <span th:text="#{error.header}">Ocorreu um erro</span>
+        </h1>
+
+        <h2 class="h5" th:text="${status}"></h2>
+        <p class="mb-1" th:text="${error}"></p>
+        <p class="text-light" th:text="${message}"></p>
+
+        <a class="btn btn-primary mt-3"
+           type="button"
+           th:href="@{'/' + ${#locale.language} + '/'}"
+           th:text="#{error.backToHome}">
+            Voltar à página inicial
+        </a>
+    </div>
+</main>
+
+<script th:src="@{/webjars/jquery/jquery.min.js(v=${version}) }"></script>
+<script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.min.js}"></script>
+</body>
+</html>
