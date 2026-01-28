@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-12 col-sm-10 col-md-6 col-lg-3 ms-auto">
             <div class="input-group">
-                <input type="text" class="form-control bg-transparent" placeholder="Search" aria-label="Search">
+                <input type="text" class="form-control bg-transparent" th:placeholder="#{app.placeholder.search}" aria-label="Search">
                 <button class="btn btn-dark" type="button">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
@@ -16,94 +16,13 @@
         </div>
     </div>
     <div id="editor">
-        <h1> Conversão de Tempo</h1>
-        <h3><br></h3>
-        <h3>Leia um valor inteiro, que é o tempo de duração em segundos de um determinado evento em uma fábrica, e
-            informe-o expresso no formato horas:minutos:segundos.</h3>
-        <h3><br></h3>
-        <h3>Entrada</h3>
-        <ol>
-            <li data-list="bullet"><span class="ql-ui" contenteditable="false"></span> O arquivo de entrada contém um
-                valor inteiro N.
-            </li>
-        </ol>
-        <h3><br></h3>
-        <h3>Saída</h3>
-        <ol>
-            <li data-list="bullet"><span class="ql-ui" contenteditable="false"></span> Imprima o tempo lido no arquivo de entrada (segundos), convertido para horas:minutos:segundos, conforme
-                exemplo fornecido.
-            </li>
-        </ol>
-        <h3><br></h3>
-        <table>
-            <tbody>
-            <tr>
-                <td data-row="1" class="ql-align-center">Exemplo de entrada</td>
-                <td data-row="1" class="ql-align-center">Exemplo de Saída</td>
-            </tr>
-            </tbody>
-        </table>
-        <h3><br></h3>
-        <table>
-            <tbody>
-            <tr>
-                <td data-row="1" class="ql-align-justify">556</td>
-                <td data-row="1" class="ql-align-justify">0:9:16</td>
-            </tr>
-            </tbody>
-        </table>
-        <h3><br></h3>
-        <table>
-            <tbody>
-            <tr>
-                <td data-row="1" class="ql-align-justify">1</td>
-                <td data-row="1" class="ql-align-justify">0:0:1</td>
-            </tr>
-            </tbody>
-        </table>
-        <p><br></p>
-        <p><br></p>
+
     </div>
     <div class="mb-3">
-      <pre><code class="language-js">public class Main {
-
-    public static void main(String[] args) throws IOException {
-
-        Scanner sc = new Scanner(System.in);
-        int number = sc.nextInt();
-        List&lt;Integer&gt; numeros = new ArrayList&lt;&gt;();
-        for(int i = 0; i&lt;=5;i++) {
-            if(number%2!=0) {
-                numeros.add(number);
-
-            }
-            else {
-                i--;
-
-            }
-            number++;
-        }
-        numeros.stream().mapToInt(x -&gt; x).forEach(System.out::println);
-
-        sc.close();
-
-    }</code></pre>
+      <pre><code class="language-js" id="code"></code></pre>
     </div>
     <nav aria-label="Page navigation example">
-        <ul class="pagination justify-content-center">
-            <li class="page-item">
-                <a class="page-link bg-transparent" href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li class="page-item"><a class="page-link bg-transparent text-light" href="#">1</a></li>
-            <li class="page-item"><a class="page-link bg-transparent text-light" href="#">2</a></li>
-            <li class="page-item"><a class="page-link bg-transparent text-light" href="#">3</a></li>
-            <li class="page-item">
-                <a class="page-link bg-transparent" href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
+        <ul class="pagination justify-content-center" id="nav-pages">
         </ul>
     </nav>
 </main>

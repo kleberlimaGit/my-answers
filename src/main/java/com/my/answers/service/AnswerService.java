@@ -29,10 +29,9 @@ public class AnswerService {
                 dataType(request.dataType())
                 .question(request.question())
                 .snippet(request.snippet())
-                .language(Language.getInstance(request.language()))
                 .questionNumber(request.questionNumber())
                 .build();
-
+        answer.setLanguage(Language.getInstance(request.language()));
         saveOrUpdate(answer);
     }
 
@@ -41,9 +40,10 @@ public class AnswerService {
                 dataType(request.dataType())
                 .question(request.question())
                 .snippet(request.snippet())
-                .language(Language.getInstance(request.language()))
                 .questionNumber(request.questionNumber())
                 .build();
+        answer.setLanguage(Language.getInstance(request.language()));
+
         saveOrUpdate(answer);
     }
 

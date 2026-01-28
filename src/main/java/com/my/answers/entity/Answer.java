@@ -28,9 +28,5 @@ public class Answer extends AbstractEntity {
     @Column(nullable = false, unique = true)
     private Integer questionNumber;
 
-    @Column(nullable = false)
-    @Enumerated(EnumType.STRING)
-    private Language language;
-
 }
 

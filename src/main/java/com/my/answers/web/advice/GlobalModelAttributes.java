@@ -13,14 +13,17 @@ public class GlobalModelAttributes {
 
         String uri = (String) request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI);
         String ctx = request.getContextPath();
+        if(uri != null){
 
-        if (uri.startsWith(ctx)) uri = uri.substring(ctx.length());
+            if ( uri.startsWith(ctx)) uri = uri.substring(ctx.length());
 
-        if (uri.startsWith("/")) uri = uri.substring(1);
+            if (uri.startsWith("/")) uri = uri.substring(1);
 
-        String[] parts = uri.split("/", 2);
-        if (parts.length == 0) return "";
+            String[] parts = uri.split("/", 2);
+            if (parts.length == 0) return "";
 
-        return (parts.length > 1) ? parts[1] : "";
+            return (parts.length > 1) ? parts[1] : "";
+        }
+        return "";
     }
 }

@@ -28,32 +28,34 @@
 
 <section class="container mt-5">
     <div class="input-group mb-3 w-50">
-        <input type="text" class="form-control bg-transparent" placeholder="Text" aria-label="Text">
-        <button class="btn btn-primary px-4" type="button" id="button-addon2" th:text="#{app.button.execute}">Execute</button>
+        <input type="text" class="form-control bg-transparent" id="input-execute" th:placeholder="#{app.placeholder.input}" aria-label="Text">
+        <button class="btn btn-primary px-4" type="button" id="btn-execute" th:text="#{app.button.execute}">Execute</button>
     </div>
 </section>
 
-<section  class="container mt-2 mb-4 rounded px-5 d-flex align-items-center justify-content-center" style="background-color: var(--bs-gray-700);">
-    <p class="mt-3">KnX1xdVSdEHliREuSgUX9kgmit</p>
+<section  class="container mt-2 mb-4 rounded px-5 d-flex align-items-center justify-content-start" style="background-color: var(--bs-gray-700);">
+    <pre  class="mt-3" id="question-content"></pre >
 </section>
 
-<script th:src="@{/webjars/jquery/jquery.min.js(v=${version}) }"></script>
+<script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
 <script th:src="@{/webjars/bootstrap/5.3.3/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/index.js}"></script>
 <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.9.0/prism.min.js" integrity="sha512-KnX1xdVSdEHliREuSgUX9kgmit/Wk63n4X3cjoWfISEVsi2Qi2NW88dYyKXCCS8YcFMgzHywK3BIafTfhK2Tig==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-<script>
+<script th:inline="javascript">
     const quill = new Quill('#editor', {
-        placeholder: 'Compose an epic...',
         theme: 'snow',
+        readOnly: true,
+        modules: {
+            toolbar: null
+        },
     });
-
-    axios.get(`/change-language?lang=en-US`)
-        .then(() => {
-            window.location.reload();
-        });
+    let lang = [[${lang}]];
+    let page = [[${pageAnswers}]]
+    console.log(page)
 </script>
-
+<script th:src="@{/js/index.js}"></script>
 </body>
 </html>

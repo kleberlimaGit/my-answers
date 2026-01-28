@@ -1,9 +1,6 @@
 package com.my.answers.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.MappedSuperclass;
-import jakarta.persistence.PrePersist;
-import jakarta.persistence.PreUpdate;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.time.Instant;
@@ -16,8 +13,9 @@ public abstract class AbstractEntity {
 
     private Instant updatedAt;
 
-    @Column(nullable = false, length = 4)
-    private String country;
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    private Language language;
 
     @PrePersist
     public void prePersist() {

@@ -1,15 +1,17 @@
 package com.my.answers.web.controller;
 
+import com.my.answers.entity.dto.AnswerResponse;
 import com.my.answers.entity.dto.QuestionRequest;
 import com.my.answers.resolver.QuestionServiceResolver;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import com.my.answers.service.AnswerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.LocaleResolver;
-
-import java.util.Locale;
 
 @Controller
 @RequestMapping("/{lang}/answers")
@@ -18,19 +20,20 @@ public class AnswersController {
 
     private final QuestionServiceResolver resolver;
     private final LocaleResolver localeResolver;
+    private final AnswerService answerService;
 
-    @PostMapping
-    public String get(@RequestBody QuestionRequest data) {
-        return resolver.resolve(data.questionNumber()).response(data.request());
+    @GetMapping
+    public String listar(ModelMap model,
+                         @RequestParam(value = "dataType", defaultValue = "") String dataType,
+                         @RequestParam(value = "page", defaultValue = "0") Integer page,
+                         @PathVariable String lang
+
+    ) {
+        PageRequest pageRequest = PageRequest.of(page, 1, Sort.Direction.valueOf("ASC"), "questionNumber");
+        Page<AnswerResponse> pageAnswers = answerService.findAllPaged(pageRequest, dataType, lang);
+        model.addAttribute("pageAnswers", pageAnswers);
+        model.addAttribute("lang", lang);
+        return "index";
     }
 
-    @GetMapping("/change-language")
-    @ResponseBody
-    public void changeLanguage(@RequestParam String lang,
-                               HttpServletRequest request,
-                               HttpServletResponse response) {
-
-        Locale locale = Locale.forLanguageTag(lang);
-        localeResolver.setLocale(request, response, locale);
-    }
 }
