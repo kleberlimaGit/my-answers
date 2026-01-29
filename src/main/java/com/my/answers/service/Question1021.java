@@ -14,7 +14,7 @@ import java.util.Locale;
 @RequiredArgsConstructor
 public class Question1021 implements QuestionService {
 
-    private final MessageSource messageSource;
+    private final MessageProvider messages;
 
     @Override
     public int questionNumber() {
@@ -22,7 +22,7 @@ public class Question1021 implements QuestionService {
     }
 
     @Override
-    public String response(String data, Language language) {
+    public String response(List<String> data, Language language) {
         String _notes = switch (language) {
             case PT_BR -> "NOTAS:\n";
             case EN_US -> "NOTES:\n";
@@ -32,7 +32,7 @@ public class Question1021 implements QuestionService {
             case EN_US -> "COINS:\n";
         };
         try {
-            double value = Double.parseDouble(data.trim().replace(",", "."));
+            double value = Double.parseDouble(data.get(0).trim().replace(",", "."));
             StringBuilder sb = new StringBuilder();
             List<Integer> notes = List.of(100, 50, 20, 10, 5, 2);
             List<Double> coins = List.of(1.0, 0.5, 0.25, 0.1, 0.05, 0.01);
@@ -53,13 +53,9 @@ public class Question1021 implements QuestionService {
                 sb.append(String.format("%d %s R$ %.2f%n", quantity,language.equals(Language.PT_BR) ? "moedas(s) de" : "coin(s) of" , coin));
             }
             return sb.toString();
-        } catch (Exception e) {
+        }  catch (Exception e) {
             log.error("Error parsing input data: {}", data, e);
-            Locale locale = switch (language) {
-                case PT_BR -> new Locale("pt", "BR");
-                case EN_US -> Locale.US;
-            };
-            return messageSource.getMessage("error.parse.input", null, locale);
+            return messages.get("error.parse.input", language);
         }
     }
 }

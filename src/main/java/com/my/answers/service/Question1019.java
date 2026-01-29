@@ -1,0 +1,50 @@
+package com.my.answers.service;
+
+import com.my.answers.entity.Language;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
+import org.springframework.stereotype.Service;
+
+import java.time.Duration;
+import java.util.Arrays;
+import java.util.List;
+import java.util.OptionalDouble;
+import java.util.stream.IntStream;
+
+@Service
+@Log4j2
+@RequiredArgsConstructor
+public class Question1019 implements QuestionService {
+
+    private final MessageProvider messages;
+
+    @Override
+    public int questionNumber() {
+        return 1019;
+    }
+
+    @Override
+    public String response(List<String> data, Language language) {
+        try {
+            long seconds = Long.parseLong(data.get(0).trim());
+            Duration total = Duration.ofSeconds(seconds);
+            int horas = (int) total.toHours();
+            int minutos = total.toMinutesPart();
+            int seg = total.toSecondsPart();
+
+            return horas+":"+minutos+":"+seg;
+        } catch (Exception e) {
+            log.error("Error parsing input data: {}", data, e);
+            return messages.get("error.parse.input", language);
+        }
+    }
+
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+
+        List<String> sts = Arrays.asList("A","B");
+        OptionalDouble average = IntStream
+                .concat(Arrays.stream(nums1), Arrays.stream(nums2)).average();
+        return average.getAsDouble();
+
+    }
+}

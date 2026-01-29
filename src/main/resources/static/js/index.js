@@ -1,3 +1,4 @@
+let request = [];
 function createNavigation(pageRequest) {
     let pageContent = pageRequest;
     const total = Math.max(0, Number(pageContent.totalPages) || 0);
@@ -58,12 +59,20 @@ $(document).ready(function () {
 
 
 $("#btn-execute").on("click", function () {
-    axios.post(`/myanswers/${lang}/answers`, {
-        request: $("#input-execute").val(),
-        questionNumber: page.content[0].questionNumber
-    }).then((res) => {
-        let response = res.data;
-        response = response.includes("Err") ? "&#9888; " + response : response;
-        $("#question-content").empty().html(response);
-    })
+    let inputSize = page.content[0].inputSize;
+    request.push($("#input-execute").val())
+    if(inputSize === request.length) {
+        axios.post(`/myanswers/${lang}/answers`, {
+            request,
+            questionNumber: page.content[0].questionNumber
+        }).then((res) => {
+            let response = res.data;
+            response = response.includes("Err") ? "&#9888; " + response : response;
+            $("#question-content").empty().html(response);
+        })
+    }else{
+        $("#question-content").empty().html(inputSizeError);
+    }
+
+
 })

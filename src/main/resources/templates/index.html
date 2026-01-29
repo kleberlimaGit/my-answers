@@ -46,16 +46,12 @@
 
 <script th:inline="javascript">
     const quill = new Quill('#editor', {
-        theme: 'snow',
-        readOnly: true,
-        modules: {
-            toolbar: null
-        },
+        theme: 'snow'
     });
     let lang = [[${lang}]];
     let page = [[${pageAnswers}]]
+    let inputSizeError = [[${inputSizeError}]]
     console.log(page)
 </script>
-<script th:src="@{/js/index.js}"></script>
 </body>
 </html>

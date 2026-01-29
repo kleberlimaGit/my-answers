@@ -13,4 +13,5 @@ public class AnswerResponse {
     private String question;
     private String snippet;
     private Integer questionNumber;
+    private Integer inputSize;
 }

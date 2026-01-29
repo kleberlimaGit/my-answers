@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface AnswerRepository extends JpaRepository<Answer, Long> {
 
-    @Query("SELECT new com.my.answers.entity.dto.AnswerResponse(a.question, a.snippet, a.questionNumber) FROM Answer a " +
+    @Query("SELECT new com.my.answers.entity.dto.AnswerResponse(a.question, a.snippet, a.questionNumber, a.inputSize) FROM Answer a " +
             "WHERE (:dataType IS NULL OR LOWER(a.dataType) LIKE LOWER(CONCAT('%',:dataType,'%'))) AND a.language = :language")
     Page<AnswerResponse> findAllPaged(PageRequest pageRequest, String dataType, Language language);
 
