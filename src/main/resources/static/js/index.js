@@ -60,7 +60,12 @@ $(document).ready(function () {
 
 $("#btn-execute").on("click", function () {
     let inputSize = page.content[0].inputSize;
+    if($("#input-execute").val() === "") {
+        $("#question-content").empty().html(inputEmpty);
+        return;
+    }
     request.push($("#input-execute").val())
+    $("#input-execute").val(null)
     if(inputSize === request.length) {
         axios.post(`/myanswers/${lang}/answers`, {
             request,
@@ -69,10 +74,9 @@ $("#btn-execute").on("click", function () {
             let response = res.data;
             response = response.includes("Err") ? "&#9888; " + response : response;
             $("#question-content").empty().html(response);
+            request = [];
         })
     }else{
         $("#question-content").empty().html(inputSizeError);
     }
-
-
 })
