@@ -40,11 +40,9 @@ public class Question1049 implements QuestionService {
                     .filter(key -> new HashSet<>(key).containsAll(type)).findFirst()
                     .map(animals::get).orElse(messages.get("question.1049.error", language));
             return sb.append(value).toString();
-        } catch (
-                Exception e) {
+        } catch (Exception e) {
             log.error("Error parsing input data: {}", data, e);
             return messages.get("error.parse.input", language);
         }
     }
-
 }
