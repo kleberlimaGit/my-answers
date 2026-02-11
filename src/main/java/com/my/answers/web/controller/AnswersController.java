@@ -27,7 +27,8 @@ public class AnswersController {
                          @PathVariable String lang
 
     ) {
-        PageRequest pageRequest = PageRequest.of(page, 1, Sort.Direction.valueOf("ASC"), "questionNumber");
+        dataType = dataType.isBlank() ? null : dataType;
+        PageRequest pageRequest = PageRequest.of(page, 1, Sort.Direction.ASC, "questionNumber");
         Page<AnswerResponse> pageAnswers = answerService.findAllPaged(pageRequest, dataType, lang);
         model.addAttribute("pageAnswers", pageAnswers);
         model.addAttribute("lang", lang);

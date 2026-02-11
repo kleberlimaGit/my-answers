@@ -22,21 +22,21 @@ public class AnswersRestController {
     private final LocaleResolver localeResolver;
     private final AnswerService answerService;
 
-//    @GetMapping("{lang}/page")
-//    public ResponseEntity<Page<AnswerResponse>> findAll(
-//            @RequestParam(value = "dataType", defaultValue = "") String dataType,
-//            @RequestParam(value = "language", defaultValue = "pt") String language,
-//            @PathVariable String lang
-//
-//    ){
-//        PageRequest pageRequest = PageRequest.of(0, 1, Sort.Direction.valueOf("ASC"), "questionNumber");
-//        Page<AnswerResponse> answers = answerService.findAllPaged(pageRequest, dataType, language);
-//        return ResponseEntity.ok(answers);
-//    }
-
     @PostMapping
     public String get(@RequestBody QuestionRequest data, @PathVariable String lang) {
         return resolver.resolve(data.questionNumber()).response(data.request(), Language.getInstance(lang));
     }
 
+    @GetMapping("page")
+    public ResponseEntity<Page<AnswerResponse>> getPageRest(
+            @RequestParam(value = "dataType", defaultValue = "") String dataType,
+            @RequestParam(value = "page", defaultValue = "0") Integer page,
+            @PathVariable String lang
+
+    ) {
+        dataType = dataType.isBlank() ? null : dataType;
+        PageRequest pageRequest = PageRequest.of(page, 1, Sort.Direction.ASC, "questionNumber");
+        Page<AnswerResponse> pageAnswers = answerService.findAllPaged(pageRequest, dataType, lang);
+        return ResponseEntity.ok(pageAnswers);
+    }
 }

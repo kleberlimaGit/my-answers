@@ -11,17 +11,16 @@ function createNavigation(pageRequest) {
         </button>
     </li>
     `;
-
     for (let page = 0; page < total; page++) {
+
         html += `
         <li class="page-item ${page === current ? 'active' : ''}">
             <button class="page-link bg-transparent text-light" type="button" onclick="getNewPage(${page})" aria-label="Next">
-                ${current + 1}
+                ${page + 1}
             </button>
         </li>
         `;
     }
-
     html += `
     <li class="${pageContent.last ? 'page-item disabled' : 'page-item'}">
         <button class="page-link bg-transparent" type="button" onclick="getNewPage(${current + 1})" aria-label="Next">
@@ -80,3 +79,13 @@ $("#btn-execute").on("click", function () {
         $("#question-content").empty().html(inputSizeError);
     }
 })
+
+async function getNewPage(pageNumber) {
+    await axios.get(`/myanswers/${lang}/answers/page?page=${pageNumber}`).then((res) => {
+        console.log(res.data);
+        page = res.data;
+        createNavigation(page);
+        createSnippet(page);
+        $("#question-content").empty().html(null)
+    })
+}

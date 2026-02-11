@@ -8,10 +8,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.time.Duration;
-import java.util.Arrays;
 import java.util.List;
-import java.util.OptionalDouble;
-import java.util.stream.IntStream;
 
 @Service
 @Log4j2
@@ -39,14 +36,5 @@ public class Question1019 implements QuestionService {
             log.error("Error parsing input data: {}", data, e);
             return messages.get("error.parse.input", language);
         }
-    }
-
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-
-        List<String> sts = Arrays.asList("A","B");
-        OptionalDouble average = IntStream
-                .concat(Arrays.stream(nums1), Arrays.stream(nums2)).average();
-        return average.getAsDouble();
-
     }
 }
