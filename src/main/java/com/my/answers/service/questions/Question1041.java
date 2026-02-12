@@ -27,14 +27,18 @@ public class Question1041 implements QuestionService {
     public String response(List<String> data, Language language) {
         try {
             StringBuilder sb = new StringBuilder();
-            double numberOne = Double.parseDouble(data.get(0).trim());
-            double numberTwo = Double.parseDouble(data.get(1).trim());
-            String quadrant = String.format(Locale.US,"%.1f %.1f", Math.signum(numberOne), Math.signum(numberTwo));
+            double x = Double.parseDouble(data.get(0).trim());
+            double y = Double.parseDouble(data.get(1).trim());
+            String quadrant = String.format(Locale.US,"%.1f %.1f", Math.signum(x), Math.signum(y));
             Map<String, String> quadrantMap = Map.of(
                     "1.0 1.0","Q1",
                     "-1.0 1.0","Q2",
                      "-1.0 -1.0","Q3",
                     "1.0 -1.0","Q4",
+                    "1.0 0.0","Eixo X",
+                    "-1.0 0.0","Eixo X",
+                    "0.0 1.0","Eixo Y",
+                    "0.0 -1.0","Eixo Y",
                     "0.0 0.0","Origem"
             );
             return sb.append(quadrantMap.get(quadrant)).toString();

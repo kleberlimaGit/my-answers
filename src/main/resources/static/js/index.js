@@ -14,7 +14,7 @@ function createNavigation(pageRequest) {
     for (let page = 0; page < total; page++) {
 
         html += `
-        <li class="page-item ${page === current ? 'active' : ''}">
+        <li class="page-item ${page === current ? 'active disabled' : ''}">
             <button class="page-link bg-transparent text-light" type="button" onclick="getNewPage(${page})" aria-label="Next">
                 ${page + 1}
             </button>
@@ -85,6 +85,7 @@ async function getNewPage(pageNumber) {
         console.log(res.data);
         page = res.data;
         createNavigation(page);
+        createTextQuestion(page)
         createSnippet(page);
         $("#question-content").empty().html(null)
     })
