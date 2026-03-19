@@ -56,7 +56,7 @@ public class Question1048 implements QuestionService {
             }
             sb.append(String.format("Novo salario: %.2f%n", newSalary));
             sb.append(String.format("Reajuste ganho: %.2f%n", increase));
-            sb.append(String.format("Em percentual: %d %%", (int)(percentage * 100)));
+            sb.append(String.format("Em percentual: %d%%", (int)(percentage * 100)));
             return sb.toString();
         } catch (Exception e) {
             log.error("Error parsing input data: {}", data, e);

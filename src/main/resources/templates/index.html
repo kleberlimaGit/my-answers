@@ -45,14 +45,10 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
 <script th:inline="javascript">
-    const quill = new Quill('#editor', {
-        theme: 'snow'
-    });
     let lang = [[${lang}]];
     let page = [[${pageAnswers}]]
     let inputSizeError = [[#{app.input.size.error}]]
     let inputEmpty = [[#{app.input.empty.error}]]
-    console.log(page)
 </script>
 </body>
 </html>

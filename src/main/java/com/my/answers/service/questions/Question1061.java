@@ -29,8 +29,8 @@ public class Question1061 implements QuestionService {
     public String response(List<String> data, Language language) {
         try {
             StringBuilder sb = new StringBuilder();
-            int startDay = data.get(0).toLowerCase().contains("dia")  ?  Integer.parseInt(data.get(0).toLowerCase().split("dia")[1].trim()) : Integer.parseInt(data.get(0)) ;
-            int endDay = data.get(2).toLowerCase().contains("dia")  ?  Integer.parseInt(data.get(2).toLowerCase().split("dia")[1].trim()) : Integer.parseInt(data.get(2)) ;
+            int startDay =  Integer.parseInt(data.get(0).substring(4).trim());
+            int endDay =  Integer.parseInt(data.get(2).substring(4).trim());
             List<Integer> startTime = Arrays.stream(data.get(1).split(" : ")).map(Integer::parseInt).toList();
             List<Integer> endTime = Arrays.stream(data.get(3).split(" : ")).map(Integer::parseInt).toList();
             CharSequence timeStartFormat = "P"+startDay+"DT"+startTime.get(0)+"H"+startTime.get(1)+"M"+startTime.get(2)+"S";

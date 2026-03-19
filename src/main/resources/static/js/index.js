@@ -14,7 +14,7 @@ function createNavigation(pageRequest) {
     for (let page = 0; page < total; page++) {
 
         html += `
-        <li class="page-item ${page === current ? 'active disabled' : ''}">
+        <li class="page-item ${page === current ? 'active' : ''}">
             <button class="page-link bg-transparent text-light" type="button" onclick="getNewPage(${page})" aria-label="Next">
                 ${page + 1}
             </button>
@@ -39,9 +39,8 @@ function createSnippet(pageRequest) {
 
 function createTextQuestion(pageRequest) {
     const html = pageRequest.content[0].question;
-    quill.setText("");
-    quill.clipboard.dangerouslyPasteHTML(html);
-    quill.enable(false);
+    $("#editor").empty();
+    $("#editor").html(html);
 }
 
 function decodeHtml(html) {
