@@ -8,6 +8,7 @@ import com.my.answers.repository.AnswerRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -46,7 +47,10 @@ public class AnswerService {
 
         saveOrUpdate(answer);
     }
-
+    @Cacheable(
+            cacheNames = "answersPaged",
+            key = "T(java.util.Objects).hash(#language, #dataType, #pageRequest.pageNumber, #pageRequest.pageSize, #pageRequest.sort)"
+    )
     public Page<AnswerResponse> findAllPaged(PageRequest pageRequest, String dataType, String language) {
         Language lang = Language.getInstance(language);
         return answerRepository.findAllPaged(pageRequest, dataType, lang);
