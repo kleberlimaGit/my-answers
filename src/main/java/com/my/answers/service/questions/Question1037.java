@@ -29,7 +29,7 @@ public class Question1037 implements QuestionService {
            double value = Double.parseDouble(data.get(0).trim());
             for (String interval : intervals) {
                 String[] limits = interval.split(",");
-                double lowerBound = Double.parseDouble(limits[0]) != 0 ? Double.parseDouble(limits[0]) + 0.0001 : Double.parseDouble(limits[0]);
+                double lowerBound = Double.parseDouble(limits[0]) != 0 ? Double.parseDouble(limits[0]) + 0.00001 : Double.parseDouble(limits[0]);
                 double upperBound = Double.parseDouble(limits[1]);
                 if (value >= lowerBound && value <= upperBound) {
                     String bracketOrParentheses = lowerBound % 5 == 0 ? "[" : "(";

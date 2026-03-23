@@ -25,7 +25,7 @@ public class WebConfig {
                 new ReloadableResourceBundleMessageSource();
         messageSource.setBasename("classpath:messages");
         messageSource.setDefaultEncoding("UTF-8");
-        messageSource.setDefaultLocale(Locale.forLanguageTag("pt-BR"));
+        messageSource.setDefaultLocale(Locale.forLanguageTag("en-US"));
         return messageSource;
     }
 }

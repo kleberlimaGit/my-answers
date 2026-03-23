@@ -31,13 +31,17 @@ public class Question1061 implements QuestionService {
             StringBuilder sb = new StringBuilder();
             int startDay =  Integer.parseInt(data.get(0).substring(4).trim());
             int endDay =  Integer.parseInt(data.get(2).substring(4).trim());
+
             List<Integer> startTime = Arrays.stream(data.get(1).split(" : ")).map(Integer::parseInt).toList();
             List<Integer> endTime = Arrays.stream(data.get(3).split(" : ")).map(Integer::parseInt).toList();
+
             CharSequence timeStartFormat = "P"+startDay+"DT"+startTime.get(0)+"H"+startTime.get(1)+"M"+startTime.get(2)+"S";
             CharSequence timeEndFormat = "P"+endDay+"DT"+endTime.get(0)+"H"+endTime.get(1)+"M"+endTime.get(2)+"S";
+
             Duration startDuration = Duration.parse(timeStartFormat);
             Duration endDuration = Duration.parse(timeEndFormat);
             Duration finalDuration = endDuration.minus(startDuration);
+
             sb.append(finalDuration.toDays()).append(" dia(s)").append("\n");
             sb.append(finalDuration.toHoursPart()).append(" hora(s)").append("\n");
             sb.append(finalDuration.toMinutesPart()).append(" minuto(s)").append("\n");

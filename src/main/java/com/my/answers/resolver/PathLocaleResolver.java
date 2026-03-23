@@ -13,21 +13,20 @@ public class PathLocaleResolver implements LocaleResolver {
     @Override
     public Locale resolveLocale(HttpServletRequest request) {
 
-        // 1) Se for erro, pega a URI original que falhou
+        // Se for erro, pega a URI original que falhou
         String uri = (String) request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI);
 
-        // 2) Fallback para requests normais
+        // Fallback para requests normais
         if (uri == null || uri.isBlank()) {
             uri = request.getRequestURI();
         }
 
-        // 3) Remove o context-path (/myanswers)
-        String ctx = request.getContextPath(); // "/myanswers"
+        // Remove o context-path (/myanswers)
+        String ctx = request.getContextPath();
         if (ctx != null && !ctx.isBlank() && uri.startsWith(ctx)) {
-            uri = uri.substring(ctx.length()); // vira "/pt/..." ou "/error"
+            uri = uri.substring(ctx.length());
         }
 
-        // 4) Agora sim pega o primeiro segmento real
         if (uri.startsWith("/")) {
             uri = uri.substring(1);
         }
@@ -38,7 +37,7 @@ public class PathLocaleResolver implements LocaleResolver {
         return switch (langSegment) {
             case "pt" -> Locale.forLanguageTag("pt-BR");
             case "en" -> Locale.forLanguageTag("en-US");
-            default -> Locale.forLanguageTag("pt-BR");
+            default -> Locale.forLanguageTag("en-US");
         };
     }
 

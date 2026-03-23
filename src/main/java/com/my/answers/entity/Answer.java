@@ -2,7 +2,6 @@ package com.my.answers.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.extern.log4j.Log4j;
 
 @Entity
 @Table(name = "tb_answer")
@@ -30,6 +29,9 @@ public class Answer extends AbstractEntity {
 
     @Column(nullable = false)
     private Integer inputSize;
+
+    @Column(columnDefinition = "TEXT")
+    private String explanation;
 
 }
 

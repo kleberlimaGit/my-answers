@@ -24,7 +24,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav w-100 flex-lg-row flex-column mb-2 mb-lg-0 justify-content-lg-between align-items-center">
                     <li class="nav-item" >
-                        <button class="nav-link text-light border border-primary rounded-pill px-4" aria-current="page" type="button" id="about_me" th:text="#{app.about.me}">About Me</button>
+                        <a th:href="@{'/' + ${#locale.language} + '/about-me'}" class="nav-link text-light border border-info rounded-pill px-4 btn btn-info" aria-current="page" type="button" id="about_me" th:text="#{app.about.me}">About Me</a>
                     </li>
                 </ul>
             </div>

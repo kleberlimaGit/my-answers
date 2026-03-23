@@ -5,22 +5,23 @@
 </head>
 <body>
 <main class="container mt-5 rounded px-5 py-3" style="background-color: var(--bs-gray-700);" th:fragment="main">
-    <div class="row">
-        <div class="col-12 col-sm-10 col-md-6 col-lg-3 ms-auto">
-            <div class="input-group">
-                <input type="text" class="form-control bg-transparent" th:placeholder="#{app.placeholder.search}" aria-label="Search">
-                <button class="btn btn-dark" type="button">
-                    <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-            </div>
-        </div>
-    </div>
+<!--    <div class="row">-->
+<!--        <div class="col-12 col-sm-10 col-md-6 col-lg-3 ms-auto">-->
+<!--            <div class="input-group">-->
+<!--                <input type="text" class="form-control bg-transparent" th:placeholder="#{app.placeholder.search}" aria-label="Search">-->
+<!--                <button class="btn btn-dark" type="button">-->
+<!--                    <i class="fa fa-search" aria-hidden="true"></i>-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
     <div id="editor">
 
     </div>
     <div class="mb-3">
       <pre><code class="language-js" id="code"></code></pre>
     </div>
+    <div th:insert="~{fragments/solution-explanation :: solution-explanation}"></div>
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center" id="nav-pages">
         </ul>

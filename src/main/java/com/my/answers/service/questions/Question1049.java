@@ -36,9 +36,7 @@ public class Question1049 implements QuestionService {
                     Arrays.asList("invertebrado", "anelideo", "hematofago"), "sanguessuga",
                     Arrays.asList("invertebrado", "anelideo", "onivoro"), "minhoca"
             );
-            String value = animals.keySet().stream()
-                    .filter(key -> new HashSet<>(key).containsAll(type)).findFirst()
-                    .map(animals::get).orElse(messages.get("question.1049.error", language));
+            String value = animals.getOrDefault(type, messages.get("question.1049.error", language));
             return sb.append(value).toString();
         } catch (Exception e) {
             log.error("Error parsing input data: {}", data, e);

@@ -37,6 +37,12 @@ function createSnippet(pageRequest) {
     Prism.highlightElement(document.getElementById("code"));
 }
 
+function createShowExplanation(pageRequest) {
+    const html = pageRequest.content[0].explanation;
+    $("#solutionExplanationContent").empty();
+    $("#solutionExplanationContent").html(html);
+}
+
 function createTextQuestion(pageRequest) {
     const html = pageRequest.content[0].question;
     $("#editor").empty();
@@ -52,6 +58,7 @@ function decodeHtml(html) {
 $(document).ready(function () {
     createNavigation(page);
     createSnippet(page);
+    createShowExplanation(page);
     createTextQuestion(page);
 })
 
@@ -85,7 +92,17 @@ async function getNewPage(pageNumber) {
         page = res.data;
         createNavigation(page);
         createTextQuestion(page)
+        createShowExplanation(page)
         createSnippet(page);
         $("#question-content").empty().html(null)
     })
 }
+
+
+$("#about_me").on("click", function (e) {
+    e.preventDefault();
+    const aboutMelink = $(this).attr("href");
+    const modalEdit = new bootstrap.Modal('#modalAboutMe', {})
+    $('.modal-content').load(aboutMelink)
+    modalEdit.show();
+})

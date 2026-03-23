@@ -11,7 +11,7 @@ public class HomeController {
 
     @GetMapping({"", "/"})
     public String root() {
-        return "redirect:/pt/answers";
+        return "redirect:/en/answers";
     }
 
     @GetMapping({"/{lang:pt|en}", "/{lang:pt|en}/"})
