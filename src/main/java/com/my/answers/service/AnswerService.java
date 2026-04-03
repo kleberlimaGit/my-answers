@@ -14,6 +14,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
 @Service
@@ -47,10 +48,12 @@ public class AnswerService {
 
         saveOrUpdate(answer);
     }
+
     @Cacheable(
             cacheNames = "answersPaged",
             key = "T(java.util.Objects).hash(#language, #dataType, #pageRequest.pageNumber, #pageRequest.pageSize, #pageRequest.sort)"
     )
+    @Transactional(readOnly = true)
     public Page<AnswerResponse> findAllPaged(PageRequest pageRequest, String dataType, String language) {
         Language lang = Language.getInstance(language);
         return answerRepository.findAllPaged(pageRequest, dataType, lang);
