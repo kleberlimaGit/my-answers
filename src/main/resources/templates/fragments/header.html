@@ -4,7 +4,7 @@
            id="brand-home"
            th:href="@{'/' + ${#locale.language} + '/answers'}"
            onclick="try{sessionStorage.setItem('answers.page.en','0');sessionStorage.setItem('answers.page.pt','0');}catch(e){}">
-            <img class="brand__mark" th:src="@{/images/logo-myanswers.png}" alt="My Answers"/>
+            <img class="brand__mark" th:src="@{/images/logo-myanswers.svg}" alt="My Answers" width="42" height="42"/>
             <span class="brand__text">
                 <span class="brand__name">My Answers</span>
                 <span class="brand__tag" th:text="#{app.brand.tag}">Beecrowd solutions</span>
