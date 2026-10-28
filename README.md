@@ -1,115 +1,146 @@
 # My Answers
 
-This project is a web application built with Spring Boot that showcases solutions to programming problems from Beecrowd (URI Online Judge). It allows users to view, search, and execute code snippets for various problems in multiple languages.
+Interactive portfolio of programming challenges solved in **Java**, inspired by [Beecrowd](https://www.beecrowd.com.br/).
+
+Instead of a static list of snippets, visitors can **read the problem**, **inspect the solution**, **read an explanation**, and **run inputs live** — in Portuguese and English.
+
+Built as a practical showcase of backend engineering with Spring Boot.
+
+**Author:** Kleber Lima · Backend Software Engineer  
+**Contact:** [kleber-r@outlook.com](mailto:kleber-r@outlook.com)  
+**English:** B1 (improving) · Open to remote opportunities abroad
+
+---
+
+## Why this project
+
+Recruiters and engineers can evaluate more than syntax:
+
+- how problems are structured and explained
+- how Java solutions are written and simplified
+- how a small Spring Boot app is organized (web + API + cache + i18n)
+- how the UI behaves on desktop and mobile
 
 ## Features
 
-- **Multilingual Support**: Available in Portuguese (PT_BR) and English (EN_US)
-- **Problem Solutions**: Displays solutions for Beecrowd problems with code snippets
-- **Code Execution**: Interactive execution of code snippets
-- **About Me**: Personal information section
-- **Responsive Design**: Mobile-friendly interface using Bootstrap 5
-- **Caching**: Optimized performance with Caffeine caching
+- Problem browser with pagination
+- Live input runner for selected challenges
+- Solution explanation panel
+- Fullscreen code view
+- Bilingual UI (`/en`, `/pt`)
+- About Me profile with contact
+- Caffeine cache for paged answers
+- Responsive modern UI
 
-## Technology Stack
+## Tech stack
 
-- **Backend**: Java 17, Spring Boot 4.0.1
-- **Database**: MySQL
-- **Frontend**: Thymeleaf, Bootstrap 5, jQuery, Font Awesome
-- **Build Tool**: Maven
-- **Caching**: Caffeine
+| Layer | Choices |
+|---|---|
+| Language | Java 17 |
+| Framework | Spring Boot 4 |
+| Web | Spring MVC + Thymeleaf |
+| API | REST endpoints for paging and execution |
+| Persistence | Spring Data JPA + MySQL |
+| Cache | Caffeine |
+| Frontend | Bootstrap 5, jQuery, Prism, custom CSS |
+| Build | Maven |
 
-## Prerequisites
+## Quick start
 
-- Java 17 or higher
+### Prerequisites
+
+- Java 17+
 - Maven 3.6+
-- MySQL 8.0+
+- MySQL 8+
 
-## Installation and Setup
+### 1. Clone
 
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/kleberlimaGit/my-answers.git
-   cd my-answers
-   ```
+```bash
+git clone https://github.com/kleberlimaGit/my-answers.git
+cd my-answers
+```
 
-2. **Database Setup**:
-   - Create a MySQL database named `db_answers`
-   - For development, use the default credentials (root/root) or update `application-dev.properties`
+### 2. Database
 
-3. **Build the project**:
-   ```bash
-   mvn clean install
-   ```
+Create a schema:
 
-4. **Run the application**:
-   ```bash
-   mvn spring-boot:run
-   ```
+```sql
+CREATE DATABASE db_answers CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+```
 
-   Or run with a specific profile:
-   ```bash
-   mvn spring-boot:run -Dspring-boot.run.profiles=dev
-   ```
+Default local credentials (dev profile):
 
-5. **Access the application**:
-   - Open your browser and go to `http://localhost:8080/myanswers`
-   - Default redirect: `http://localhost:8080/myanswers/en/answers`
+- URL: `jdbc:mysql://localhost:3306/db_answers`
+- User: `root`
+- Password: `root`
+
+Override in `src/main/resources/application-dev.properties` if needed.
+
+### 3. Run
+
+```bash
+mvn spring-boot:run
+```
+
+Open:
+
+- [http://localhost:8080/en/answers](http://localhost:8080/en/answers)
+- [http://localhost:8080/pt/answers](http://localhost:8080/pt/answers)
+
+## Main endpoints
+
+| Method | Path | Description |
+|---|---|---|
+| `GET` | `/{lang}/answers` | Problem page (UI) |
+| `GET` | `/{lang}/answers/page?page=` | Paginated JSON |
+| `POST` | `/{lang}/answers` | Execute inputs for a problem |
+| `GET` | `/{lang}/about-me` | About Me content (modal) |
+
+`lang` = `en` or `pt`
+
+## Project structure
+
+```text
+src/main/java/com/my/answers/
+  config/          # locale + messages
+  entity/          # JPA entities + DTOs
+  repository/      # data access
+  resolver/        # question service resolution + locale
+  service/         # answers + per-question executors
+  web/             # MVC controllers, REST, error handling
+src/main/resources/
+  static/          # CSS, JS, images
+  templates/       # Thymeleaf pages/fragments
+  messages_*.properties
+```
 
 ## Configuration
 
-The application uses Spring profiles for different environments:
+Profiles:
 
-- **dev**: Development profile with local MySQL database
-- **prd**: Production profile with environment variables for database connection
+- `dev` (default): local MySQL
+- `prd`: production DB via environment variables
 
-### Environment Variables (Production)
-
-Set the following environment variables for production:
+Production variables:
 
 - `PROFILE_ANSWERS=prd`
-- `PRD_ANSWERDB_URL`: JDBC URL for production database
-- `PRD_ANSWERDB_USERNAME`: Database username
-- `PRD_ANSWERDB_PASSWORD`: Database password
+- `PRD_ANSWERDB_URL`
+- `PRD_ANSWERDB_USERNAME`
+- `PRD_ANSWERDB_PASSWORD`
 
-### Application Properties
+## What I’m aiming for next
 
-Key configuration files:
-- `src/main/resources/application.properties`: Common settings
-- `src/main/resources/application-dev.properties`: Development settings
-- `src/main/resources/application-prd.properties`: Production settings
-- `src/main/resources/messages_en_US.properties`: English messages
-- `src/main/resources/messages_pt_BR.properties`: Portuguese messages
+- Public deploy with a stable portfolio URL
+- More curated challenges with stronger explanations
+- Broader automated tests around execution flows
 
-## Project Structure
+## Contact
 
-```
-src/
-├── main/
-│   ├── java/com/my/answers/
-│   │   ├── AnswersApplication.java          # Main application class
-│   │   ├── config/                          # Configuration classes
-│   │   ├── entity/                          # JPA entities
-│   │   ├── repository/                      # Data repositories
-│   │   ├── service/                         # Business logic services
-│   │   ├── utils/                           # Utility classes
-│   │   └── web/                             # Controllers and web layer
-│   └── resources/
-│       ├── static/                          # CSS, JS, images
-│       ├── templates/                       # Thymeleaf templates
-│       └── application*.properties          # Configuration files
-└── test/
-    └── java/com/my/answers/                  # Unit tests
-```
+If you want to talk about backend roles (Java/Spring, remote):
 
-## API Endpoints
+- Email: **kleber-r@outlook.com**
+- GitHub: [kleberlimaGit/my-answers](https://github.com/kleberlimaGit/my-answers.git)
 
-- `GET /{lang}/answers`: List problems with pagination
-- `GET /{lang}/about-me`: About me page
-- `POST /{lang}/answers`: to execute code snippets
+---
 
-## Acknowledgments
-
-- [Beecrowd](https://www.beecrowd.com.br/) for the programming problems
-- [Spring Boot](https://spring.io/projects/spring-boot) for the framework
-- [Bootstrap](https://getbootstrap.com/) for the UI components</content>
+Inspired by Beecrowd problem-solving practice. Built to show engineering thinking, not only accepted answers.

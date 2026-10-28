@@ -1,33 +1,37 @@
-<header th:fragment="header">
-    <nav class="navbar navbar-expand-lg navbar-dark header"
-         style="border-bottom: 1px solid var(--bs-gray-600);
-         border-top: 1px solid var(--bs-gray-600);
-         background: linear-gradient(135deg, var(--bs-gray-800) 0%, var(--bs-black) 100%);">
-        <div class="container-fluid position-relative">
-            <a th:href="@{'/' + ${#locale.language} + '/'}"><img th:src="@{/images/logo-myanswers.png}" alt="Logo"
-                 class="navbar-brand ms-lg-5 ms-0" style="width: 10rem; height: 10rem"/></a>
+<header th:fragment="header" class="site-header">
+    <div class="site-header__inner">
+        <a class="brand"
+           id="brand-home"
+           th:href="@{'/' + ${#locale.language} + '/answers'}"
+           onclick="try{sessionStorage.setItem('answers.page.en','0');sessionStorage.setItem('answers.page.pt','0');}catch(e){}">
+            <img class="brand__mark" th:src="@{/images/logo-myanswers.png}" alt="My Answers"/>
+            <span class="brand__text">
+                <span class="brand__name">My Answers</span>
+                <span class="brand__tag" th:text="#{app.brand.tag}">Beecrowd solutions</span>
+            </span>
+        </a>
 
-            <div class="position-absolute top-0 end-0 me-lg-5 me-2 mt-2 d-flex gap-2" style="z-index: 2;">
-                <a th:href="@{'/en/' + ${langPath != null ? langPath : ''}}"  class="btn btn-sm p-0 border-0 bg-transparent" aria-label="English">
-                    <img th:src="@{/images/en-flag.png}" alt="English" style="width: 24px; height: 24px"/>
+        <div class="header-actions">
+            <div class="lang-switch" role="group" aria-label="Language">
+                <a th:href="@{'/en/' + ${langPath != null and !#strings.isEmpty(langPath) ? langPath : 'answers'}}"
+                   th:classappend="${#locale.language == 'en'} ? ' is-active'"
+                   aria-label="English">
+                    <img th:src="@{/images/en-flag.png}" alt=""/>
                 </a>
-                <a th:href="@{'/pt/' + ${langPath != null ? langPath : ''}}" class="btn btn-sm p-0 border-0 bg-transparent" aria-label="Português">
-                    <img th:src="@{/images/pt-flag.png}" alt="Português" style="width: 24px; height: 24px"/>
+                <a th:href="@{'/pt/' + ${langPath != null and !#strings.isEmpty(langPath) ? langPath : 'answers'}}"
+                   th:classappend="${#locale.language == 'pt'} ? ' is-active'"
+                   aria-label="Português">
+                    <img th:src="@{/images/pt-flag.png}" alt=""/>
                 </a>
             </div>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav w-100 flex-lg-row flex-column mb-2 mb-lg-0 justify-content-lg-between align-items-center">
-                    <li class="nav-item" >
-                        <a th:href="@{'/' + ${#locale.language} + '/about-me'}" class="nav-link text-light border border-info rounded-pill px-4 btn btn-info" aria-current="page" type="button" id="about_me" th:text="#{app.about.me}">About Me</a>
-                    </li>
-                </ul>
-            </div>
+            <a th:href="@{'/' + ${#locale.language} + '/about-me'}"
+               class="btn btn-primary"
+               id="about_me"
+               type="button">
+                <i class="bi bi-person"></i>
+                <span th:text="#{app.about.me}">About Me</span>
+            </a>
         </div>
-    </nav>
+    </div>
 </header>

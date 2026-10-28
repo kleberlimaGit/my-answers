@@ -1,144 +1,127 @@
-<section class="bg-transparent mx-0 my-0 w-100">
-    <div class="row justify-content-center mx-0 my-0 w-100 py-0 px-0 bg-transparent">
-        <div class="mx-0 my-0 w-100 py-0 px-0">
-            <div class="card border-0 shadow-lg about-card overflow-hidden">
+<section class="about-shell">
+    <div class="about-hero">
+                <button type="button"
+                class="btn btn-ghost btn-sm about-close"
+                data-bs-dismiss="modal"
+                aria-label="Fechar">
+            <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
 
-                <!-- Top banner -->
-                <div class="about-header text-center position-relative py-3">
-                    <div class="avatar-wrapper mb-3">
-                        <img src="https://avatars.githubusercontent.com/u/54951528?s=96&v=4" alt="Kleber Lima" class="profile-avatar">
-                    </div>
+        <img src="https://avatars.githubusercontent.com/u/54951528?s=160&v=4"
+             alt="Kleber Lima"
+             class="profile-avatar"
+             width="104"
+             height="104"/>
 
-                    <h1 class="fw-bold mb-2 text-white">Kleber Lima</h1>
-                    <p class="mb-3 about-subtitle">
-                        Analista de Sistemas • Java • Spring Boot • Sistemas Escaláveis
-                    </p>
+        <h1 class="about-name" id="aboutMeTitle">Kleber Lima</h1>
+        <p class="about-role">Backend Software Engineer · Java · Spring Boot · Aberto a remoto</p>
+        <p class="about-role" style="margin-top:0.35rem;font-weight:500;color:var(--ink-muted)">Inglês B1 · Brasil</p>
 
-                    <div class="d-flex justify-content-center flex-wrap gap-2">
-                        <a href="https://github.com/kleberlimaGit/my-answers.git" target="_blank" class="btn btn-glow">
-                            <i class="bi bi-github me-2"></i>GitHub
-                        </a>
-                    </div>
-                </div>
+        <div class="about-actions">
+            <a href="mailto:kleber-r@outlook.com" class="btn btn-primary">
+                <i class="bi bi-envelope"></i> kleber-r@outlook.com
+            </a>
+            <a href="https://github.com/kleberlimaGit/my-answers.git"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="btn btn-ghost">
+                <i class="bi bi-github"></i> GitHub
+            </a>
+        </div>
+    </div>
 
-                <!-- Body -->
-                <div class="card-body p-4 p-md-5">
+    <div class="about-body">
+        <div class="mb-4">
+            <h3 class="section-title">
+                <i class="bi bi-person-badge"></i> Sobre Mim
+            </h3>
 
-                    <div class="mb-5">
-                        <h3 class="section-title">
-                            <i class="bi bi-person-badge me-2"></i>Sobre Mim
-                        </h3>
+            <p class="about-text">
+                Backend Software Engineer focado em
+                <span class="text-accent">Java</span> e
+                <span class="text-accent">Spring Boot</span>.
+                Atuo no setor bancário construindo e evoluindo APIs e integrações usadas em fluxos críticos,
+                onde confiabilidade, segurança e contratos claros pesam tanto quanto a velocidade de entrega.
+            </p>
 
-                        <p class="about-text">
-                            Olá! Sou um Analista de Sistemas com sólida experiência em desenvolvimento backend,
-                            especialmente com <span class="text-accent">Java</span>,
-                            <span class="text-accent">Spring Boot</span> e tecnologias web modernas e legadas.
-                        </p>
+            <p class="about-text">
+                No dia a dia, trabalho com serviços REST e SOAP, bancos relacionais,
+                autenticação com <span class="text-accent">JWT</span> /
+                <span class="text-accent">OAuth2</span> e a modernização prática de stacks legadas
+                (<span class="text-accent">JSP</span>/<span class="text-accent">JSF</span>/<span class="text-accent">Thymeleaf</span>),
+                sem comprometer a operação em produção.
+            </p>
 
-                        <p class="about-text">
-                            Atualmente atuo no setor bancário, desenvolvendo sistemas seguros e de alto desempenho
-                            que dão suporte a operações críticas de negócio. Minha experiência inclui APIs REST, SOAP Web Services
-                            bancos de dados relacionais, autenticação e autorização com JWT e OAuth2,
-                            além da integração entre diferentes sistemas.
-                        </p>
+            <p class="about-text">
+                Também uso ferramentas de IA no fluxo de engenharia —
+                para explorar soluções mais rápido, apoiar revisão de código, refatoração e documentação —
+                mantendo a responsabilidade pelas decisões de design, edge cases e qualidade em produção.
+                Estou aprendendo de forma contínua a aplicar LLMs em produtos backend
+                (coding assistido, tooling interno e integrações via API), sem substituir o julgamento técnico.
+            </p>
 
-                        <p class="about-text">
-                            Também possuo forte experiência com sistemas legados utilizando tecnologias como
-                            <span class="text-accent">JSP</span>, <span class="text-accent">JSF</span> e
-                            <span class="text-accent">Thymeleaf</span>, o que me permite manter, evoluir
-                            e modernizar aplicações existentes com segurança e continuidade operacional.
-                        </p>
+            <p class="about-text">
+                Este site é meu portfólio interativo: desafios inspirados no Beecrowd resolvidos em Java,
+                com código legível, explicações e um runner ao vivo para mostrar como eu penso o problema —
+                muitas vezes buscando soluções mais simples e elegantes, não apenas “passar no caso”.
+            </p>
 
-                        <p class="about-text">
-                            Este site nasceu como uma forma prática de exercitar lógica e criatividade, inspirado em plataformas como Beecrowd,
-                            onde resolvo desafios utilizando <span class="text-accent">Java</span> de maneira não convencional.
+            <p class="about-text mb-0">
+                Busco oportunidades remotas no exterior para contribuir com sistemas backend,
+                colaborar em inglês (B1, em evolução) e continuar evoluindo em arquitetura distribuída
+                e desenvolvimento assistido por IA. Contato:
+                <a class="text-accent" href="mailto:kleber-r@outlook.com">kleber-r@outlook.com</a>.
+            </p>
+        </div>
 
-                            Meu objetivo não é apenas chegar à solução, mas explorar diferentes abordagens, muitas vezes buscando reduzir
-                            ao máximo a quantidade de código e encontrar formas mais elegantes e eficientes de resolver os problemas.
-                        </p>
+        <div class="mb-4">
+            <h3 class="section-title">
+                <i class="bi bi-code-slash"></i> Principais Competências
+            </h3>
+            <div class="skills">
+                <span class="skill-badge">Java 11 / 17</span>
+                <span class="skill-badge">Spring Boot</span>
+                <span class="skill-badge">REST APIs</span>
+                <span class="skill-badge">SOAP</span>
+                <span class="skill-badge">JPA / Hibernate</span>
+                <span class="skill-badge">MySQL</span>
+                <span class="skill-badge">PostgreSQL</span>
+                <span class="skill-badge">JWT / OAuth2</span>
+                <span class="skill-badge">Kafka</span>
+                <span class="skill-badge">Docker</span>
+                <span class="skill-badge">Maven</span>
+                <span class="skill-badge">Git</span>
+                <span class="skill-badge">Thymeleaf</span>
+                <span class="skill-badge">JavaScript</span>
+                <span class="skill-badge">AI-assisted coding</span>
+            </div>
+        </div>
 
-                        <p class="about-text">
-                            Aqui você encontrará exemplos reais dessa abordagem, com soluções que fogem do padrão tradicional,
-                            demonstrando não apenas conhecimento técnico, mas também pensamento analítico e criatividade na resolução de problemas.
-                        </p>
-
-                        <p class="about-text mb-0">
-                            Estou sempre em busca de evoluir tecnicamente, escrever código limpo e sustentável
-                            e contribuir com projetos relevantes em ambientes colaborativos.
-                        </p>
-                    </div>
-
-                    <div class="mb-5">
-                        <h3 class="section-title">
-                            <i class="bi bi-code-slash me-2"></i>Principais Competências
-                        </h3>
-
-                        <div class="d-flex flex-wrap gap-2">
-                            <span class="skill-badge">Java 8 / 11 / 17</span>
-                            <span class="skill-badge">Spring Boot</span>
-                            <span class="skill-badge">REST APIs</span>
-                            <span class="skill-badge">SOAP Web Service</span>
-                            <span class="skill-badge">JPA / Hibernate</span>
-                            <span class="skill-badge">HTML / CSS / JavaScript</span>
-                            <span class="skill-badge">Bootstrap</span>
-                            <span class="skill-badge">React</span>
-                            <span class="skill-badge">Angular</span>
-                            <span class="skill-badge">JQuery</span>
-                            <span class="skill-badge">Thymeleaf</span>
-                            <span class="skill-badge">JSP/JSF</span>
-                            <span class="skill-badge">MySQL</span>
-                            <span class="skill-badge">PostgreSQL</span>
-                            <span class="skill-badge">Sybase</span>
-                            <span class="skill-badge">JWT</span>
-                            <span class="skill-badge">OAuth2</span>
-                            <span class="skill-badge">Git</span>
-                            <span class="skill-badge">Maven</span>
-                            <span class="skill-badge">Docker</span>
-                            <span class="skill-badge">Kafka</span>
-                        </div>
-                    </div>
-
-                    <div class="mb-4">
-                        <h3 class="section-title">
-                            <i class="bi bi-stars me-2"></i>O Que Eu Valorizo
-                        </h3>
-
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="mini-card h-100">
-                                    <i class="bi bi-shield-check feature-icon"></i>
-                                    <h5>Sistemas Confiáveis</h5>
-                                    <p class="mb-0">Desenvolver soluções seguras, estáveis e de fácil manutenção para necessidades reais.</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="mini-card h-100">
-                                    <i class="bi bi-diagram-3 feature-icon"></i>
-                                    <h5>Arquitetura Escalável</h5>
-                                    <p class="mb-0">Criar aplicações que acompanham o crescimento do negócio e a evolução dos requisitos.</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="mini-card h-100">
-                                    <i class="bi bi-lightbulb feature-icon"></i>
-                                    <h5>Aprendizado Contínuo</h5>
-                                    <p class="mb-0">Evoluir constantemente por meio de projetos, resolução de problemas e boas práticas modernas.</p>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="mini-card h-100">
-                                    <i class="bi bi-globe-americas feature-icon"></i>
-                                    <h5>Visão Global</h5>
-                                    <p class="mb-0">Desenvolver soluções acessíveis, práticas e preparadas para diferentes contextos e ambientes.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
+        <div>
+            <h3 class="section-title">
+                <i class="bi bi-stars"></i> O Que Eu Valorizo
+            </h3>
+            <div class="values-grid">
+                <article class="value-item">
+                    <i class="bi bi-shield-check"></i>
+                    <h5>Confiança em produção</h5>
+                    <p>Backends seguros e previsíveis para fluxos críticos — especialmente em contextos regulados.</p>
+                </article>
+                <article class="value-item">
+                    <i class="bi bi-arrow-repeat"></i>
+                    <h5>Modernização pragmática</h5>
+                    <p>Evoluir legado com passos seguros, sem sacrificar estabilidade nem entrega.</p>
+                </article>
+                <article class="value-item">
+                    <i class="bi bi-robot"></i>
+                    <h5>IA com critério</h5>
+                    <p>Usar IA para acelerar, e validar com testes, revisão e restrições do mundo real.</p>
+                </article>
+                <article class="value-item">
+                    <i class="bi bi-globe-americas"></i>
+                    <h5>Colaboração remote-ready</h5>
+                    <p>Comunicação clara, ownership e código que outros engenheiros entendem rápido.</p>
+                </article>
             </div>
         </div>
     </div>

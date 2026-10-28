@@ -1,0 +1,34 @@
+<div th:fragment="modal-solution" th:remove="tag">
+    <div class="modal fade"
+         id="modalSolutionFullscreen"
+         tabindex="-1"
+         role="dialog"
+         aria-modal="true"
+         aria-labelledby="modalSolutionTitle"
+         aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content solution-modal">
+                <div class="solution-modal__bar">
+                    <div class="solution-modal__heading">
+                        <h2 class="solution-modal__title" id="modalSolutionTitle">
+                            <i class="bi bi-code-slash" aria-hidden="true"></i>
+                            <span th:text="#{app.panel.solution}">Solution</span>
+                        </h2>
+                        <span class="problem-number" id="modal-problem-number">#—</span>
+                    </div>
+                    <button type="button"
+                            class="btn btn-ghost btn-sm"
+                            id="btn-close-solution-modal"
+                            data-bs-dismiss="modal"
+                            th:attr="aria-label=#{app.solution.close}">
+                        <i class="bi bi-fullscreen-exit" aria-hidden="true"></i>
+                        <span th:text="#{app.solution.close}">Close</span>
+                    </button>
+                </div>
+                <div class="solution-modal__body">
+                    <pre class="solution-modal__code"><code class="language-java" id="code-fullscreen"></code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

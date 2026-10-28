@@ -10,20 +10,29 @@ public class GlobalModelAttributes {
 
     @ModelAttribute("langPath")
     public String pathAfterLang(HttpServletRequest request) {
-
         String uri = (String) request.getAttribute(RequestDispatcher.ERROR_REQUEST_URI);
-        String ctx = request.getContextPath();
-        if(uri != null){
-
-            if ( uri.startsWith(ctx)) uri = uri.substring(ctx.length());
-
-            if (uri.startsWith("/")) uri = uri.substring(1);
-
-            String[] parts = uri.split("/", 2);
-            if (parts.length == 0) return "";
-
-            return (parts.length > 1) ? parts[1] : "";
+        if (uri == null) {
+            uri = request.getRequestURI();
         }
-        return "";
+
+        String ctx = request.getContextPath();
+        if (uri != null && uri.startsWith(ctx)) {
+            uri = uri.substring(ctx.length());
+        }
+
+        if (uri == null || uri.isBlank()) {
+            return "answers";
+        }
+
+        if (uri.startsWith("/")) {
+            uri = uri.substring(1);
+        }
+
+        String[] parts = uri.split("/", 2);
+        if (parts.length < 2 || parts[1].isBlank()) {
+            return "answers";
+        }
+
+        return parts[1];
     }
 }

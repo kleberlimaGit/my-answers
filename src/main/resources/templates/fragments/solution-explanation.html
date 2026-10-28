@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
-<div class="mt-3 text-end" th:fragment="solution-explanation">
-    <p>
-        <button class="btn btn-outline-info btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#solutionExplanation" aria-expanded="false" aria-controls="solutionExplanation">
-            <i class="fa-solid fa-magnifying-glass"></i>
-            <span th:text="#{app.explanation.button}">Show Explanation</span>
-        </button>
-    </p>
+<div class="explanation-wrap" th:fragment="solution-explanation">
+    <button class="btn btn-ghost btn-sm"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#solutionExplanation"
+            aria-expanded="false"
+            aria-controls="solutionExplanation">
+        <i class="bi bi-lightbulb"></i>
+        <span th:text="#{app.explanation.button}">Show explanation</span>
+    </button>
     <div class="collapse" id="solutionExplanation">
-        <div class="card card-body bg-dark text-light border-secondary" id="solutionExplanationContent">
-
-        </div>
+        <div class="explanation-body" id="solutionExplanationContent"></div>
     </div>
-
 </div>
-</body>

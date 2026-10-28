@@ -11,7 +11,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.LocaleResolver;
 
 @RestController
 @RequestMapping("/{lang}/answers")
@@ -19,7 +18,6 @@ import org.springframework.web.servlet.LocaleResolver;
 public class AnswersRestController {
 
     private final QuestionServiceResolver resolver;
-    private final LocaleResolver localeResolver;
     private final AnswerService answerService;
 
     @PostMapping
